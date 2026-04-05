@@ -7,6 +7,7 @@ import MyOrdersPage from './pages/MyOrderPage'; // ✅ Fix typo (was MyOrderPage
 import SellerDashboard from './pages/SellerDashboard';
 import VendorDashboard from './pages/VendorDashboard';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -31,7 +32,9 @@ function App() {
        <Route path="/seller-orders" element={ <SellerOrders /> } />
           <Route path="/seller-dashboard" element={<SellerDashboard /> } />
                   <Route path="/seller-product" element={<SellerStorePage /> } />   
+                    
       </Routes>
+       <Footer />
     </Router>
     </>
     

@@ -54,15 +54,7 @@ const Login = () => {
 
         {/* Brand */}
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2.5 group mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-rose-500 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-              <span className="text-white font-black text-sm">BB</span>
-            </div>
-            <div className="text-left leading-none">
-              <div className="text-lg font-extrabold text-gray-900 tracking-tight">BulkBuddy</div>
-              <div className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Bazaar Marketplace</div>
-            </div>
-          </Link>
+     
           <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Welcome back</h1>
           <p className="text-gray-400 text-sm mt-1">Login to manage your orders and store</p>
         </div>
