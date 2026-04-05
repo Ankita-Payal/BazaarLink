@@ -1,190 +1,265 @@
 // pages/HomePage.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import Hero from "../components/Hero";
-
-const features = [
-  {
-    icon: "💰",
-    title: "Bulk Savings",
-    desc: "Order raw materials in bulk at discounted prices directly from local sellers.",
-    color: "bg-amber-50 border-amber-200",
-    iconBg: "bg-amber-100",
-  },
-  {
-    icon: "📍",
-    title: "Local Discovery",
-    desc: "Find nearby sellers to reduce delivery time, costs, and support your community.",
-    color: "bg-orange-50 border-orange-200",
-    iconBg: "bg-orange-100",
-  },
-  {
-    icon: "📦",
-    title: "Order Tracking",
-    desc: "Vendors can easily track, manage, and complete their orders in real time.",
-    color: "bg-rose-50 border-rose-200",
-    iconBg: "bg-rose-100",
-  },
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Login",
-    desc: "Vendor or Seller logs in to the platform with their role-based account.",
-    icon: "🔐",
-  },
-  {
-    number: "02",
-    title: "Place / Receive Orders",
-    desc: "Vendors place bulk orders; Sellers receive and accept requests instantly.",
-    icon: "🛒",
-  },
-  {
-    number: "03",
-    title: "Delivery & Confirm",
-    desc: "Seller delivers within the agreed time, vendor confirms order completion.",
-    icon: "✅",
-  },
-];
-
-const testimonials = [
-  {
-    quote: "BulkBuddy helped me cut my costs by 30%. Highly recommended for every street vendor!",
-    name: "Ramesh",
-    role: "Street Vendor, Delhi",
-    avatar: "R",
-    color: "bg-orange-500",
-  },
-  {
-    quote: "Finally a platform that supports local sellers. The order flow is simple and great!",
-    name: "Priya",
-    role: "Raw Material Seller, Mumbai",
-    avatar: "P",
-    color: "bg-rose-500",
-  },
-];
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  // Animation on scroll effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll(".fade-up");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  const features = [
+    {
+      icon: "💰",
+      title: "Bulk Savings",
+      desc: "Order raw materials in bulk at discounted prices directly from local sellers.",
+      color: "from-amber-50 to-amber-100",
+      iconBg: "bg-amber-100",
+      border: "border-amber-200",
+    },
+    {
+      icon: "📍",
+      title: "Local Discovery",
+      desc: "Find nearby sellers to reduce delivery time, costs, and support your community.",
+      color: "from-orange-50 to-orange-100",
+      iconBg: "bg-orange-100",
+      border: "border-orange-200",
+    },
+    {
+      icon: "📦",
+      title: "Real-time Tracking",
+      desc: "Vendors can easily track, manage, and complete their orders in real time.",
+      color: "from-rose-50 to-rose-100",
+      iconBg: "bg-rose-100",
+      border: "border-rose-200",
+    },
+    {
+      icon: "🤝",
+      title: "Trusted Network",
+      desc: "Verified sellers and secure payments for peace of mind.",
+      color: "from-emerald-50 to-emerald-100",
+      iconBg: "bg-emerald-100",
+      border: "border-emerald-200",
+    },
+    {
+      icon: "⚡",
+      title: "Fast Delivery",
+      desc: "Optimized logistics for quicker turnaround times.",
+      color: "from-blue-50 to-blue-100",
+      iconBg: "bg-blue-100",
+      border: "border-blue-200",
+    },
+    {
+      icon: "🎯",
+      title: "Best Prices",
+      desc: "Competitive rates with exclusive bulk discounts.",
+      color: "from-purple-50 to-purple-100",
+      iconBg: "bg-purple-100",
+      border: "border-purple-200",
+    },
+  ];
+
+  const steps = [
+    {
+      number: "01",
+      title: "Create Account",
+      desc: "Sign up as a vendor or seller in just 2 minutes.",
+      icon: "🔐",
+    },
+    {
+      number: "02",
+      title: "Place Order",
+      desc: "Browse products and place bulk orders instantly.",
+      icon: "🛒",
+    },
+    {
+      number: "03",
+      title: "Quick Delivery",
+      desc: "Track your order until it reaches you.",
+      icon: "🚚",
+    },
+    {
+      number: "04",
+      title: "Confirm & Rate",
+      desc: "Confirm delivery and rate your experience.",
+      icon: "⭐",
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote: "BazaarLink helped me reduce costs by 35%! Best platform for small business owners.",
+      name: "Ramesh Kumar",
+      role: "Street Vendor, Delhi",
+      rating: 5,
+    },
+    {
+      quote: "Finally a platform that understands local sellers. The order flow is seamless!",
+      name: "Priya Sharma",
+      role: "Raw Material Seller, Mumbai",
+      rating: 5,
+    },
+    {
+      quote: "My business has grown 2x since joining BazaarLink. Highly recommended!",
+      name: "Ahmed Khan",
+      role: "Restaurant Owner, Hyderabad",
+      rating: 5,
+    },
+  ];
+
+  const stats = [
+    { value: "500+", label: "Active Sellers", icon: "🏪" },
+    { value: "10,000+", label: "Orders Completed", icon: "✅" },
+    { value: "98%", label: "Satisfaction Rate", icon: "⭐" },
+    { value: "24/7", label: "Customer Support", icon: "💬" },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
       <Hero />
 
-      {/* ── Features ── */}
-      <section className="relative py-20 bg-white overflow-hidden">
-        {/* Subtle top border accent */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 rounded-full bg-gradient-to-r from-orange-400 to-rose-400" />
-
+      {/* Stats Bar */}
+      <section className="py-12 bg-gradient-to-r from-orange-50 to-rose-50 border-y border-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Section header */}
-          <div className="text-center mb-14">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="text-center fade-up">
+                <div className="text-3xl mb-2">{stat.icon}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-gray-900">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-gray-500 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-14 fade-up">
             <span className="inline-block text-xs font-semibold uppercase tracking-widest text-orange-500 mb-3">
-              Platform Benefits
+              Why Choose Us
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              Why{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">
-                BulkBuddy?
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+              Everything you need in
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">
+                one platform
               </span>
             </h2>
-            <p className="text-gray-400 mt-3 max-w-md mx-auto text-sm">
+            <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
               Built for vendors and sellers who want a faster, smarter way to trade.
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {features.map((f) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((f, idx) => (
               <div
                 key={f.title}
-                className={`group border ${f.color} rounded-2xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
+                className={`group bg-gradient-to-br ${f.color} border ${f.border} rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up`}
               >
-                <div className={`w-11 h-11 ${f.iconBg} rounded-xl flex items-center justify-center text-xl mb-4`}>
+                <div className={`w-12 h-12 ${f.iconBg} rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
                   {f.icon}
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{f.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── How It Works ── */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-rose-50 relative overflow-hidden">
-        {/* Blob decoration */}
-        <div className="absolute right-0 top-0 w-80 h-80 bg-orange-100/40 rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/3" />
+      {/* How It Works */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-orange-50/30 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14 fade-up">
             <span className="inline-block text-xs font-semibold uppercase tracking-widest text-orange-500 mb-3">
               Simple Process
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              How It{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+              How it{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">
                 Works
               </span>
             </h2>
+            <p className="text-gray-500 mt-3">Get started in 4 simple steps</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 relative">
-            {/* Connector line (desktop) */}
-            <div className="hidden sm:block absolute top-8 left-[16.66%] right-[16.66%] h-px bg-gradient-to-r from-orange-200 via-rose-200 to-orange-200 pointer-events-none" />
-
-            {steps.map((step, i) => (
-              <div key={step.number} className="flex flex-col items-center text-center relative">
-                {/* Step circle */}
-                <div className="relative mb-5">
-                  <div className="w-16 h-16 rounded-2xl bg-white border-2 border-orange-200 shadow-md flex items-center justify-center text-2xl z-10 relative">
-                    {step.icon}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((step, idx) => (
+              <div key={step.number} className="relative fade-up">
+                <div className="text-center">
+                  <div className="relative mb-4 inline-block">
+                    <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mx-auto border-2 border-orange-100">
+                      {step.icon}
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-7 h-7 bg-gradient-to-br from-orange-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+                      {step.number}
+                    </div>
                   </div>
-                  <span className="absolute -top-2 -right-2 bg-gradient-to-br from-orange-500 to-rose-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow">
-                    {i + 1}
-                  </span>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-500">{step.desc}</p>
                 </div>
-                <h3 className="font-bold text-gray-900 text-base mb-2">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed max-w-[220px]">{step.desc}</p>
+                {idx < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-orange-200 to-transparent -translate-y-1/2" />
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* Testimonials */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14 fade-up">
             <span className="inline-block text-xs font-semibold uppercase tracking-widest text-orange-500 mb-3">
               Testimonials
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              What Our{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">
-                Users Say
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+              Loved by{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">
+                business owners
               </span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {testimonials.map((t) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((t, idx) => (
               <div
                 key={t.name}
-                className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                className="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up"
               >
-                {/* Quote icon */}
-                <div className="text-orange-200 text-4xl font-serif leading-none mb-3 select-none">"</div>
-                <p className="text-gray-700 text-sm leading-relaxed mb-5 -mt-2">
-                  {t.quote}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400">★</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed mb-5 italic">
+                  "{t.quote}"
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className={`w-9 h-9 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-sm shadow-sm`}>
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-900">{t.name}</p>
-                    <p className="text-xs text-gray-400">{t.role}</p>
-                  </div>
+                <div>
+                  <p className="text-sm font-bold text-gray-900">{t.name}</p>
+                  <p className="text-xs text-gray-400">{t.role}</p>
                 </div>
               </div>
             ))}
@@ -192,54 +267,51 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-rose-500">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight">
-            Ready to simplify your bulk orders?
+      {/* CTA Banner */}
+      <section className="py-16 bg-gradient-to-r from-orange-500 to-rose-500 relative overflow-hidden">
+        <div className="absolute inset-0 bg-white/5"></div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Ready to grow your business?
           </h2>
-          <p className="text-orange-100 text-sm mb-7">
-            Join hundreds of vendors and sellers already using BulkBuddy.
+          <p className="text-orange-100 text-base sm:text-lg mb-8">
+            Join thousands of businesses already using BazaarLink
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="/signup"
-              className="bg-white text-orange-600 font-bold text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg hover:bg-orange-50 transition-all duration-200 active:scale-95"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/signup"
+              className="px-8 py-3 bg-white text-orange-600 font-bold rounded-xl hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg"
             >
-              Get Started Free
-            </a>
-            <a
-              href="/login"
-              className="border border-white/40 text-white font-semibold text-sm px-6 py-3 rounded-xl hover:bg-white/10 transition-all duration-200 active:scale-95"
+              Get Started Free →
+            </Link>
+            <Link
+              to="/login"
+              className="px-8 py-3 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 hover:scale-105 transition-all duration-200"
             >
               Login to Account
-            </a>
+            </Link>
           </div>
+          <p className="text-orange-100/80 text-xs mt-6">
+            🎉 No credit card required • Free forever
+          </p>
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="bg-gray-950 text-gray-400 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          {/* Brand */}
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-orange-500 to-rose-500 flex items-center justify-center">
-              <span className="text-white font-black text-xs">BB</span>
-            </div>
-            <span className="text-white font-bold text-sm">BulkBuddy</span>
-          </div>
 
-          <p className="text-xs text-center">
-            &copy; {new Date().getFullYear()} BulkBuddy &bull; Made with ❤️ for street food heroes
-          </p>
 
-          <div className="flex items-center gap-4 text-xs">
-            <a href="/about" className="hover:text-orange-400 transition-colors">About</a>
-            <a href="/contact" className="hover:text-orange-400 transition-colors">Contact</a>
-            <a href="/privacy" className="hover:text-orange-400 transition-colors">Privacy</a>
-          </div>
-        </div>
-      </footer>
+      <style>{`
+        .fade-up {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.6s ease-out;
+        }
+        
+        .fade-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
     </div>
   );
 };

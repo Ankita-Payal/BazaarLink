@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import illustration from '../assets/bazaarlink-hero-img.png';
+import bgImage from '../assets/bazarlink-bg.jpg';
 
 const Hero = () => {
   const { user } = useAuth();
@@ -17,151 +17,102 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-orange-50 via-white to-rose-50 pt-16">
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      
+      {/* Responsive Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <img 
+          src={bgImage} 
+          alt="Background"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+      
+      {/* Light overlay for text contrast */}
+      {/* <div className="absolute inset-0 bg-white/40" /> */}
+      
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16 py-12 md:py-16 lg:py-20">
 
-      {/* ── Decorative background blobs ── */}
-      <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-orange-200/40 to-rose-200/20 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-amber-100/50 to-orange-100/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16 py-16 lg:py-24">
-
-          {/* ── Left: Content ── */}
-          <div className="flex-1 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-
+          {/* Left Content */}
+          <div className="flex-1 w-full lg:w-auto text-center lg:text-left">
+            
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 text-orange-700 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-              Bulk ordering made elegant
+            <div className="inline-flex items-center gap-2 bg-orange-500/10 backdrop-blur-sm border border-orange-200 text-orange-600 text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 sm:mb-8">
+              <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
+              <span className="font-medium">✨ India's fastest growing B2B marketplace</span>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-5">
-              Move faster on{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">
-                  bulk orders,
-                </span>
-                <span className="absolute inset-x-0 bottom-1 h-3 bg-orange-100 -z-0 rounded" />
-              </span>{" "}
-              without the usual chaos.
+            {/* Main Heading */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight sm:leading-[1.1] mb-4 sm:mb-6">
+              Connect. Order.
+              <span className="block text-orange-500 mt-1 sm:mt-2">
+                Grow your business.
+              </span>
             </h1>
 
-            {/* Subtext */}
-            <p className="text-gray-500 text-lg leading-relaxed mb-7 max-w-lg mx-auto lg:mx-0">
-              BulkBuddy helps vendors discover local sellers, place bulk requests, and track orders
-              with a cleaner, simpler workflow.
-            </p>
-
-            {/* Highlights */}
-            <div
-              aria-label="Platform highlights"
-              className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8"
-            >
-              {["🏪 Local sourcing", "⚡ Fast order flow", "🤝 Vendor & seller friendly"].map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-medium text-gray-600 bg-white border border-gray-200 px-3 py-1.5 rounded-full shadow-sm"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
+    
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-10 sm:mb-12">
               <button
                 onClick={() => handleProtectedClick('/bulk-order')}
-                className="group flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-md hover:shadow-orange-200 hover:shadow-lg transition-all duration-200 active:scale-95"
+                className="px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-all duration-200 hover:scale-105 shadow-lg text-sm sm:text-base"
               >
-                <svg className="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                Place Order
+                Start ordering 🚀
               </button>
-
               <button
                 onClick={() => handleProtectedClick('/nearby')}
-                className="group flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-orange-300 text-gray-700 hover:text-orange-600 font-semibold text-sm px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
+                className="px-6 sm:px-8 py-2.5 sm:py-3 bg-white/80 backdrop-blur-sm border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-white transition-all duration-200 text-sm sm:text-base"
               >
-                <svg className="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                Nearby Sellers
+                Explore sellers →
               </button>
             </div>
 
-            {/* Stats */}
-            <div
-              aria-label="Platform benefits"
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              {[
-                {
-                  icon: "📍",
-                  label: "Local",
-                  desc: "Discover nearby sellers quickly",
-                  color: "border-amber-200 bg-amber-50",
-                },
-                {
-                  icon: "✨",
-                  label: "Clean",
-                  desc: "Simple flow for orders & tracking",
-                  color: "border-emerald-200 bg-emerald-50",
-                },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`flex items-start gap-3 border ${stat.color} rounded-xl px-4 py-3 flex-1 max-w-[220px] mx-auto sm:mx-0`}
-                >
-                  <span className="text-xl mt-0.5">{stat.icon}</span>
-                  <div>
-                    <strong className="block text-sm font-bold text-gray-900">{stat.label}</strong>
-                    <span className="text-xs text-gray-500 leading-tight">{stat.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+ 
           </div>
 
-          {/* ── Right: Image ── */}
-          <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
-              {/* Decorative ring */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-200 to-rose-200 blur-xl opacity-40 scale-105 pointer-events-none" />
-
-              {/* Card frame */}
-              <div className="relative bg-white border border-orange-100 rounded-3xl shadow-xl shadow-orange-100/50 overflow-hidden p-3">
-                <img
-                  src={illustration}
-                  alt="Bulk order illustration"
-                  className="w-full h-full object-cover rounded-2xl"
-                  loading="eager"
-                />
-
-                {/* Floating badge on image */}
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm border border-orange-100 rounded-xl px-3 py-2 shadow-md flex items-center gap-2">
-                  <span className="text-lg">🛒</span>
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-medium uppercase tracking-wide">New order</p>
-                    <p className="text-xs font-bold text-gray-800">Bulk request sent</p>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm border border-emerald-100 rounded-xl px-3 py-2 shadow-md flex items-center gap-2">
-                  <span className="text-lg">✅</span>
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-medium uppercase tracking-wide">Status</p>
-                    <p className="text-xs font-bold text-emerald-700">Order confirmed</p>
-                  </div>
-                </div>
+          {/* Right Side - Order Card */}
+          <div className="flex-1 w-full lg:w-auto flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div className="w-full max-w-sm sm:max-w-md lg:max-w-sm bg-white/90 backdrop-blur-xl rounded-2xl border border-white/40 p-5 sm:p-6 shadow-xl ml-auto lg:ml-8">
+              
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">🎯</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">Start your journey</h3>
+                <p className="text-gray-500 text-xs mb-5 sm:mb-6">
+                  Get access to exclusive bulk deals
+                </p>
               </div>
+              
+              <button
+                onClick={() => navigate('/signup')}
+                className="w-full py-2.5 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-all duration-200 text-sm sm:text-base"
+              >
+                Create free account →
+              </button>
             </div>
           </div>
 
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <div className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-gray-500 rounded-full mt-2 animate-scroll"></div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes scroll {
+          0% { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(8px); }
+        }
+        
+        .animate-scroll {
+          animation: scroll 1.5s infinite;
+        }
+      `}</style>
     </section>
   );
 };
