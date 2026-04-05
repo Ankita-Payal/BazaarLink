@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useAuth } from "../hooks/useAuth";
-
+import logo from '../assets/bazarlink_logo.png';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -70,7 +70,7 @@ const Navbar = () => {
           >
             <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
             <img 
-              src="/src/assets/bazarlink_logo.png" 
+              src={logo}
               alt="Logo" 
               className="w-full h-full object-cover"
             />
